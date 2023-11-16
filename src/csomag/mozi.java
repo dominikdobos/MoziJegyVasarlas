@@ -1,11 +1,38 @@
 package csomag;
 
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 public class Mozi extends javax.swing.JFrame {
 
     public Mozi() {
         initComponents();
+        getContentPane().setBackground(new java.awt.Color(79, 74, 69));
+        try {
+            UIManager.setLookAndFeel(new NimbusLookAndFeel());
+            UIManager.put("control", new Color(79,74,69));
+            UIManager.put("info", new Color(255, 140, 65));
+            UIManager.put("nimbusBase", new Color(79,74,69));
+            UIManager.put("nimbusAlertYellow", new Color(255, 140, 65));
+            UIManager.put("nimbusDisabledText", new Color(108,95,91));
+            UIManager.put("nimbusFocus", new Color(255, 140, 65));
+            UIManager.put("nimbusGreen", new Color(255, 140, 65));
+            UIManager.put("nimbusInfoBlue", new Color(255, 140, 65));
+            UIManager.put("nimbusLightBackground", new Color(108,95,91));
+            UIManager.put("nimbusOrange", new Color(255, 140, 65));
+            UIManager.put("nimbusRed", new Color(255, 140, 65));
+            UIManager.put("nimbusSelectedText", new Color(255, 255, 255));
+            UIManager.put("nimbusSelectionBackground", new Color(255, 140, 65));
+            UIManager.put("text", new Color(255, 255, 255));
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (UnsupportedLookAndFeelException exc) {
+            System.err.println("Nimbus: Unsupported Look and feel!");
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -16,9 +43,9 @@ public class Mozi extends javax.swing.JFrame {
         buttonGroup2 = new javax.swing.ButtonGroup();
         poszter = new javax.swing.JPanel();
         kep = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        pFilmek = new javax.swing.JPanel();
         cmbFilm = new javax.swing.JComboBox<>();
-        jPanel3 = new javax.swing.JPanel();
+        pMegtekintheto = new javax.swing.JPanel();
         rbtn2D = new javax.swing.JRadioButton();
         rbtn3D = new javax.swing.JRadioButton();
         rbtnAngol = new javax.swing.JRadioButton();
@@ -39,11 +66,14 @@ public class Mozi extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cinema City");
 
-        poszter.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Poszter", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18))); // NOI18N
+        poszter.setBackground(new java.awt.Color(79, 74, 69));
+        poszter.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Poszter", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18), new java.awt.Color(255, 140, 65))); // NOI18N
+        poszter.setForeground(new java.awt.Color(255, 140, 65));
         poszter.setPreferredSize(new java.awt.Dimension(200, 300));
 
-        kep.setIcon(new javax.swing.ImageIcon("C:\\Users\\DobosDominik(SZOFT_2\\Desktop\\Java\\MoziJegyVasarlas\\cinema.jpg")); // NOI18N
+        kep.setIcon(new javax.swing.ImageIcon("C:\\Users\\bog44\\OneDrive\\Asztali gép\\Java\\MoziJegyVasarlas\\cinema.jpg")); // NOI18N
 
         javax.swing.GroupLayout poszterLayout = new javax.swing.GroupLayout(poszter);
         poszter.setLayout(poszterLayout);
@@ -60,85 +90,108 @@ public class Mozi extends javax.swing.JFrame {
                 .addGap(0, 18, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filmek", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18))); // NOI18N
+        pFilmek.setBackground(new java.awt.Color(79, 74, 69));
+        pFilmek.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Filmek", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18), new java.awt.Color(255, 140, 65))); // NOI18N
 
+        cmbFilm.setBackground(new java.awt.Color(108, 95, 91));
         cmbFilm.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cmbFilm.setForeground(new java.awt.Color(255, 140, 65));
         cmbFilm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Válassz egy filmet!", "57 másodperc", "A lapkirály lánya", "Állati iramban", "A mi kocsmánk", "Az ördögűző: A hívő" }));
+        cmbFilm.setOpaque(true);
         cmbFilm.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbFilmItemStateChanged(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout pFilmekLayout = new javax.swing.GroupLayout(pFilmek);
+        pFilmek.setLayout(pFilmekLayout);
+        pFilmekLayout.setHorizontalGroup(
+            pFilmekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pFilmekLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cmbFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        pFilmekLayout.setVerticalGroup(
+            pFilmekLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pFilmekLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(cmbFilm, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Megtekinthető", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18))); // NOI18N
+        pMegtekintheto.setBackground(new java.awt.Color(79, 74, 69));
+        pMegtekintheto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Megtekinthető", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18), new java.awt.Color(255, 140, 65))); // NOI18N
 
         buttonGroup1.add(rbtn2D);
+        rbtn2D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        rbtn2D.setForeground(new java.awt.Color(255, 140, 65));
         rbtn2D.setText("2D");
 
         buttonGroup1.add(rbtn3D);
+        rbtn3D.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        rbtn3D.setForeground(new java.awt.Color(255, 140, 65));
         rbtn3D.setText("3D");
 
         buttonGroup2.add(rbtnAngol);
+        rbtnAngol.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        rbtnAngol.setForeground(new java.awt.Color(255, 140, 65));
         rbtnAngol.setText("Angol");
 
         buttonGroup2.add(rbtnMagyar);
+        rbtnMagyar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        rbtnMagyar.setForeground(new java.awt.Color(255, 140, 65));
         rbtnMagyar.setText("Magyar");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout pMegtekinthetoLayout = new javax.swing.GroupLayout(pMegtekintheto);
+        pMegtekintheto.setLayout(pMegtekinthetoLayout);
+        pMegtekinthetoLayout.setHorizontalGroup(
+            pMegtekinthetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pMegtekinthetoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pMegtekinthetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbtn2D)
                     .addComponent(rbtn3D))
                 .addGap(38, 38, 38)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(pMegtekinthetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rbtnMagyar)
                     .addComponent(rbtnAngol))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        pMegtekinthetoLayout.setVerticalGroup(
+            pMegtekinthetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pMegtekinthetoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pMegtekinthetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtn2D)
                     .addComponent(rbtnAngol))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(pMegtekinthetoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbtnMagyar)
                     .addComponent(rbtn3D))
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        pJegyek.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Jegyek", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18))); // NOI18N
+        pJegyek.setBackground(new java.awt.Color(79, 74, 69));
+        pJegyek.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Jegyek", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18), new java.awt.Color(255, 140, 65))); // NOI18N
 
-        pFelnott.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Felnőtt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        pFelnott.setBackground(new java.awt.Color(79, 74, 69));
+        pFelnott.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Felnőtt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(255, 140, 65))); // NOI18N
 
+        lblFDb.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblFDb.setForeground(new java.awt.Color(255, 140, 65));
         lblFDb.setText("Darab:");
 
-        spnFelnott.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        spnFelnott.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
         spnFelnott.setEnabled(false);
+        spnFelnott.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnFelnottStateChanged(evt);
+            }
+        });
 
+        chbFelnott.setIcon(new javax.swing.ImageIcon("C:\\Users\\bog44\\OneDrive\\Asztali gép\\Java\\MoziJegyVasarlas\\uncheckbox.jpg")); // NOI18N
         chbFelnott.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbFelnottItemStateChanged(evt);
@@ -169,11 +222,14 @@ public class Mozi extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pDiak.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diák", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
+        pDiak.setBackground(new java.awt.Color(79, 74, 69));
+        pDiak.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diák", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(255, 140, 65))); // NOI18N
 
+        lblDDb.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDDb.setForeground(new java.awt.Color(255, 140, 65));
         lblDDb.setText("Darab:");
 
-        spnDiak.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        spnDiak.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
         spnDiak.setEnabled(false);
         spnDiak.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -181,6 +237,9 @@ public class Mozi extends javax.swing.JFrame {
             }
         });
 
+        chbDiak.setBorder(null);
+        chbDiak.setContentAreaFilled(false);
+        chbDiak.setIcon(new javax.swing.ImageIcon("C:\\Users\\bog44\\OneDrive\\Asztali gép\\Java\\MoziJegyVasarlas\\uncheckbox.jpg")); // NOI18N
         chbDiak.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 chbDiakItemStateChanged(evt);
@@ -236,18 +295,35 @@ public class Mozi extends javax.swing.JFrame {
         btnTorol.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnTorol.setForeground(new java.awt.Color(255, 255, 255));
         btnTorol.setText("Törlés");
+        btnTorol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTorolActionPerformed(evt);
+            }
+        });
 
         btnFoglal.setBackground(new java.awt.Color(255, 140, 65));
         btnFoglal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnFoglal.setForeground(new java.awt.Color(255, 255, 255));
         btnFoglal.setText("Foglalás");
+        btnFoglal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFoglalActionPerformed(evt);
+            }
+        });
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fizetendő", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18))); // NOI18N
+        jPanel7.setBackground(new java.awt.Color(79, 74, 69));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Fizetendő", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI Black", 0, 18), new java.awt.Color(255, 140, 65))); // NOI18N
 
+        tfFizetendo.setBackground(new java.awt.Color(108, 95, 91));
         tfFizetendo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tfFizetendo.setForeground(new java.awt.Color(255, 140, 65));
+        tfFizetendo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        tfFizetendo.setText("0");
+        tfFizetendo.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         tfFizetendo.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 140, 65));
         jLabel3.setText("Ft");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -287,11 +363,11 @@ public class Mozi extends javax.swing.JFrame {
                                 .addComponent(btnFoglal, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pFilmek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnTorol, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pMegtekintheto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnFoglal, btnTorol});
@@ -308,11 +384,11 @@ public class Mozi extends javax.swing.JFrame {
                             .addComponent(btnTorol, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnFoglal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pFilmek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(pMegtekintheto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pJegyek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -321,6 +397,7 @@ public class Mozi extends javax.swing.JFrame {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnFoglal, btnTorol});
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbFilmItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbFilmItemStateChanged
@@ -336,8 +413,72 @@ public class Mozi extends javax.swing.JFrame {
     }//GEN-LAST:event_chbFelnottItemStateChanged
 
     private void spnDiakStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnDiakStateChanged
-        fizetendo();
+       jegyAr();
     }//GEN-LAST:event_spnDiakStateChanged
+
+    private void spnFelnottStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnFelnottStateChanged
+        jegyAr();
+    }//GEN-LAST:event_spnFelnottStateChanged
+
+    private void btnFoglalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFoglalActionPerformed
+        boolean diakJegyPipa = chbDiak.isSelected() == true;
+        boolean felnottJegyPipa = chbFelnott.isSelected() == true;
+        int filmKivalasztva = cmbFilm.getSelectedIndex();
+        boolean ketDPipa = rbtn2D.isSelected() == true;
+        boolean haromDPipa = rbtn3D.isSelected() == true;
+        boolean angolPipa = rbtnAngol.isSelected() == true;
+        boolean magyarPipa = rbtnMagyar.isSelected() == true;
+        
+        String foglalas = "Film címe: "+ cmbFilm.getSelectedItem() +"\n";
+        if (diakJegyPipa) {
+            foglalas += "Diák jegy(ek): "+ spnDiak.getValue() +" db\n";
+        }
+        if (felnottJegyPipa) {
+            foglalas += "Felnőtt jegy(ek): "+ spnFelnott.getValue() +" db\n";
+        }
+        foglalas += "Megtekintés módja: ";
+        if (ketDPipa) {
+            foglalas += "2D, ";
+        }
+        if (haromDPipa) {
+            foglalas += "3D, ";
+        }
+        if (angolPipa) {
+            foglalas += "angol szinkron.\n";
+        }
+        if (magyarPipa) {
+            foglalas += "magyar szinkron.\n";
+        }
+        foglalas += "Fizetendő: "+ tfFizetendo.getText() +" Ft.-";
+        
+        if((diakJegyPipa || felnottJegyPipa) && filmKivalasztva > 0 && (ketDPipa || haromDPipa) && (angolPipa || magyarPipa)) {
+            Object[] opciok = {"Igen","Mégse"};
+            int kivalasztottOpcio = JOptionPane.showOptionDialog(rootPane, "Biztosan lefoglalja a kiválasztott konfigurációt?\n"+foglalas, "Foglalás megerősítés", 2, 2, null, opciok, EXIT_ON_CLOSE);
+            if (kivalasztottOpcio == 0) {
+                JOptionPane.showMessageDialog(rootPane, "A foglalása sikeres volt.\nJó szórakozást!", "SIKERES FOGLALÁS!", 1);
+                buttonGroup1.clearSelection();
+                buttonGroup2.clearSelection();
+                chbDiak.setSelected(false);
+                chbFelnott.setSelected(false);
+                cmbFilm.setSelectedIndex(0);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(rootPane, "Hibás konfiguráció!", "HIBA! - Foglalás", 0);
+        }
+    }//GEN-LAST:event_btnFoglalActionPerformed
+
+    private void btnTorolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTorolActionPerformed
+        Object[] opciok = {"Igen","Mégse"};
+        int kivalasztottTorlesek = JOptionPane.showOptionDialog(rootPane, "Biztos törlöd a kiválasztott beállításokat?", "Törlés megerősítés", 2, 2, null, opciok, EXIT_ON_CLOSE);
+        if (kivalasztottTorlesek == 0) {
+            buttonGroup1.clearSelection();
+            buttonGroup2.clearSelection();
+            chbDiak.setSelected(false);
+            chbFelnott.setSelected(false);
+            cmbFilm.setSelectedIndex(0);
+        }
+    }//GEN-LAST:event_btnTorolActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -362,6 +503,8 @@ public class Mozi extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -379,15 +522,15 @@ public class Mozi extends javax.swing.JFrame {
     private javax.swing.JCheckBox chbFelnott;
     private javax.swing.JComboBox<String> cmbFilm;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel kep;
     private javax.swing.JLabel lblDDb;
     private javax.swing.JLabel lblFDb;
     private javax.swing.JPanel pDiak;
     private javax.swing.JPanel pFelnott;
+    private javax.swing.JPanel pFilmek;
     private javax.swing.JPanel pJegyek;
+    private javax.swing.JPanel pMegtekintheto;
     private javax.swing.JPanel poszter;
     private javax.swing.JRadioButton rbtn2D;
     private javax.swing.JRadioButton rbtn3D;
@@ -431,23 +574,32 @@ public class Mozi extends javax.swing.JFrame {
         if (chbDiak.isSelected()) {
             spnDiak.setValue(alap);
             spnDiak.setEnabled(true);
-            
+            ImageIcon icon = new ImageIcon("checkbox.jpg");
+            chbDiak.setIcon(icon);
         }
         else {
             spnDiak.setValue(0);
             spnDiak.setEnabled(false);
+            ImageIcon icon = new ImageIcon("uncheckbox.jpg");
+            chbDiak.setIcon(icon);
         }
         
         if (chbFelnott.isSelected()) {
             spnFelnott.setValue(alap);
             spnFelnott.setEnabled(true);
-            
+            ImageIcon icon = new ImageIcon("checkbox.jpg");
+            chbFelnott.setIcon(icon);
         }
         else {
             spnFelnott.setValue(0);
             spnFelnott.setEnabled(false);
+            ImageIcon icon = new ImageIcon("uncheckbox.jpg");
+            chbFelnott.setIcon(icon);
         }
         
+    }
+
+    private int jegyAr() {
         int diakJegy = 1500;
         int felnottJegy = 3000;
         
@@ -457,5 +609,12 @@ public class Mozi extends javax.swing.JFrame {
         int fizetendoAr = (diakJegy * diakJegyDb) + (felnottJegy * felnottJegyDb);
         
         tfFizetendo.setText(String.valueOf(fizetendoAr));
+        
+        return fizetendoAr;
+    }
+
+    private void torles() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
+
