@@ -2,9 +2,9 @@ package csomag;
 
 import javax.swing.ImageIcon;
 
-public class mozi extends javax.swing.JFrame {
+public class Mozi extends javax.swing.JFrame {
 
-    public mozi() {
+    public Mozi() {
         initComponents();
     }
 
@@ -137,6 +137,7 @@ public class mozi extends javax.swing.JFrame {
         lblFDb.setText("Darab:");
 
         spnFelnott.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
+        spnFelnott.setEnabled(false);
 
         chbFelnott.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -174,6 +175,11 @@ public class mozi extends javax.swing.JFrame {
 
         spnDiak.setModel(new javax.swing.SpinnerNumberModel(0, 0, 5, 1));
         spnDiak.setEnabled(false);
+        spnDiak.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnDiakStateChanged(evt);
+            }
+        });
 
         chbDiak.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -329,6 +335,10 @@ public class mozi extends javax.swing.JFrame {
         fizetendo();
     }//GEN-LAST:event_chbFelnottItemStateChanged
 
+    private void spnDiakStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnDiakStateChanged
+        fizetendo();
+    }//GEN-LAST:event_spnDiakStateChanged
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -342,19 +352,20 @@ public class mozi extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Mozi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new mozi().setVisible(true);
+                new Mozi().setVisible(true);
             }
         });
     }
@@ -418,7 +429,7 @@ public class mozi extends javax.swing.JFrame {
     private void fizetendo() {
         int alap = 1;
         if (chbDiak.isSelected()) {
-            spnDiak.setValue(Integer.valueOf(alap));
+            spnDiak.setValue(alap);
             spnDiak.setEnabled(true);
             
         }
@@ -426,5 +437,25 @@ public class mozi extends javax.swing.JFrame {
             spnDiak.setValue(0);
             spnDiak.setEnabled(false);
         }
+        
+        if (chbFelnott.isSelected()) {
+            spnFelnott.setValue(alap);
+            spnFelnott.setEnabled(true);
+            
+        }
+        else {
+            spnFelnott.setValue(0);
+            spnFelnott.setEnabled(false);
+        }
+        
+        int diakJegy = 1500;
+        int felnottJegy = 3000;
+        
+        int diakJegyDb = (int) spnDiak.getValue();
+        int felnottJegyDb = (int) spnFelnott.getValue();
+        
+        int fizetendoAr = (diakJegy * diakJegyDb) + (felnottJegy * felnottJegyDb);
+        
+        tfFizetendo.setText(String.valueOf(fizetendoAr));
     }
 }
